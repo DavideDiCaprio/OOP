@@ -6,7 +6,8 @@ class Bank():
     self.client_list = {}
 
   def print_client_list(self):
-    print(self.client_list)
+    for client_id in self.client_list.keys():
+      print(client_id)
 
   def open_account(self):
     client_identifier = input('Welcome to the bank, please insert your bank account identifier in the format name_surname:')
