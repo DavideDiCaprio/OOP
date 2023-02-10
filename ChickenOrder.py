@@ -21,3 +21,6 @@ class ChickenOrder():
   def set_delivered(self):
     if self.status == "READY":
       self.status = "DELIVERED"
+
+  def __str__(self):
+    return f"This is an instance of ChickenOrder with {self.n_chickens} chickens and {self.n_fries} fries."
