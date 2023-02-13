@@ -31,12 +31,11 @@ l.display_list() # prints [2, 2, 0, 4]
 '''
 
 class  ListAvg():
-
-  def __init__(self,n=0):
+  def __init__(self, n=0):
 
     self.n = n
 
-  def madd_number(num):
+  def add_number(num):
     pass
 
   def display_avg():
