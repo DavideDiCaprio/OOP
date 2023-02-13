@@ -23,3 +23,27 @@ thrower.throw_dice() # prints: 5
 thrower.trow_dice_n_times(n_times=3) # prints: [1, 2, 5]
 thrower.display_total_n_throws() # prints: 'The total number of throws is 6.'
 '''
+
+import random
+
+class DiceThrower():
+
+  def __init__(self,n_faces=0):
+    self.n_faces = n_faces
+    self.total_n_throws = 0
+
+  def throw_dice(self):
+    outcome = random.randint(1,self.n_faces)
+    self.total_n_throws +=1
+    print(outcome)
+    return outcome
+
+  def trow_dice_n_times(self,n_times=0):
+    self.list_of_outcome = []
+
+    while len(self.list_of_outcome) != n_times:
+      self.list_of_outcome.append(self.throw_dice())
+    print(self.list_of_outcome)
+
+  def display_total_n_throws(self):
+    print(f'The total number of throws is {self.total_n_throws}')
