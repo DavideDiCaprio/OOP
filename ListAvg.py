@@ -32,14 +32,23 @@ l.display_list() # prints [2, 2, 0, 4]
 
 class  ListAvg():
   def __init__(self, n=0):
-
     self.n = n
 
-  def add_number(num):
-    pass
+  def add_number(self, num):
+   if self.max_dimension_list != len(self.list_of_recent_numbers):
+      self.list_of_recent_numbers.append(num)
+    else:
+      self.list_of_recent_numbers.pop(-1)
+      #stuck at this point
 
-  def display_avg():
-    pass
+  def display_avg(self):
+   sum_numbers = 0
 
-  def display_list():
-    pass
+    for n in self.list_of_recent_numbers:
+      sum_numbers +=n
+    average = sum_numbers / len(self.list_of_recent_numbers)
+    print(average)
+      
+
+  def display_list(self):
+   print(self.list_of_recent_numbers)
