@@ -27,7 +27,6 @@ thrower.display_total_n_throws() # prints: 'The total number of throws is 6.'
 import random
 
 class DiceThrower():
-
   def __init__(self,n_faces=0):
     self.n_faces = n_faces
     self.total_n_throws = 0
