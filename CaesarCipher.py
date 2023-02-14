@@ -15,12 +15,17 @@ c. The class offers the method get_decrypted_text(ciphertext) which deciphers th
    string ciphertext and returns the decrypted string.
 d. The class has the method is_cipher_working() which will test if the encryption/
    decription mechanism is working properly. It performs the encryption of the string
-   ‘QWERTY,asdfg.’, then the encrypted text is decrypted and a check is performed to
+   'QWERTY,asdfg.', then the encrypted text is decrypted and a check is performed to
    test wether after decryption we properly recover the initial string. Returns True
    if the initial string is identical to the result of the decryption, False otherwise.
 
-*NOTE*: the shift will only happen for the letters in the text, not for punctuation,
+*NOTE* 1: The shift will only happen for the letters in the text, not for punctuation,
         numbers or any other symbol.
+        
+*NOTE* 2: Please remember the alphabet has only 26 letters, so sometimes you need to
+          cycle back to the beginning of the alphabet (ex: encrypting 'z' with k=4
+          would result in 'd'. For more clarity: ...xyzabcdef...)
+
 
 Here is an example:
 
@@ -36,5 +41,6 @@ print(decrypted) #prints: 'La Zanzara è una famosa trasmissione radiofonica, co
 
 cipher.is_cipher_working() # returns True.
 ```
+
 
 '''
