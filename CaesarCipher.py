@@ -36,3 +36,5 @@ print(decrypted) #prints: 'La Zanzara è una famosa trasmissione radiofonica, co
 
 cipher.is_cipher_working() # returns True.
 ```
+
+'''
