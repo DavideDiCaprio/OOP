@@ -37,17 +37,14 @@ class  ListAvg():
    self.list_of_recent_numbers = []
    
    
-  def add_number(self, num):
-   if self.max_dimension_list != len(self.list_of_recent_numbers):
-      self.list_of_recent_numbers.append(num)
-    else:
-      self.list_of_recent_numbers.pop(-1)
-      #stuck at this point
-
-      
+  def add_number(self, num=0):
+   self.list_of_recent_numbers.append(num)
+   if len(self.list_of_recent_numbers) > self.max_dimension_list:
+      self.list_of_recent_numbers.pop(0)
+     
+   
   def display_avg(self):
    sum_numbers = 0
-
     for n in self.list_of_recent_numbers:
       sum_numbers +=n
     average = sum_numbers / len(self.list_of_recent_numbers)
