@@ -35,21 +35,21 @@ class ListAvg():
       self.max_dimension_list = n
       self.list_of_recent_numbers = []
    
-   
    def add_number(self, num):
       self.list_of_recent_numbers.append(num)
       if len(self.list_of_recent_numbers) > self.max_dimension_list:
          self.list_of_recent_numbers.pop(0)
          
-         
    def display_avg(self):
-      if (len(self.list_of_recent_numbers) != 0:
-          sum_numbers = 0
-          for n in self.list_of_recent_numbers:
-          sum_numbers +=n
-      average = sum_numbers / len(self.list_of_recent_numbers)
-      print(average)
-      
+      if len(self.list_of_recent_numbers) != 0:
+         sum_numbers = 0
+         for n in self.list_of_recent_numbers:
+            sum_numbers +=n
+         average = sum_numbers / len(self.list_of_recent_numbers)
+         print(average)
+
+      else:
+         print("List empty, average not possible.")
 
    def display_list(self):
       print(self.list_of_recent_numbers)
