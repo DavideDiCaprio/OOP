@@ -44,3 +44,16 @@ cipher.is_cipher_working() # returns True.
 
 
 '''
+class CaesarCipher():
+
+  def __init__(self,k):
+    self.key = k
+  
+  def get_encrypted_text(self,plaintext):
+    pass
+
+  def get_decrypted_text(self,ciphertext):
+    pass
+
+  def is_cipher_working(self):
+    pass
