@@ -63,7 +63,7 @@ class CaesarCipher():
       return
     return ((val_to_shift-first_value+shift_amount)%len_alphabet)+first_value
     
-  def shift_letter(letter,shift):
+  def shift_letter(self,letter,shift):
     if not isinstance(shift,int):
       print('Error: shift must be integer.')
       return
