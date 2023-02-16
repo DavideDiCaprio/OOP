@@ -57,7 +57,7 @@ class CaesarCipher():
   def is_cipher_working(self):
     pass
    
-  def shift_value(val_to_shift, shift_amount, first_value, len_alphabet=26):
+  def shift_value(self,val_to_shift, shift_amount, first_value, len_alphabet=26):
     if val_to_shift < first_value or val_to_shift >= first_value+len_alphabet:
       print('ERROR: the value to shift is outside of the expected range!')
       return
