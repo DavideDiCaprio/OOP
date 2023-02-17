@@ -49,25 +49,38 @@ class CaesarCipher():
     self.key = k
     
   def get_encrypted_text(self,plaintext):
-   new_text = []
+   encrypted_text = []
    
    for l in plaintext:
       if ord(l) >= ord('a') and ord(l) <= ord('z'):
          new_text.append(self.shift_letter(letter=l,shift=self.key))
          
       elif ord(l) >= ord('A') and ord(l) <= ord('Z'):
-         new_text.append(self.shift_letter(letter=l,shift=self.key))
+         encrypted_text.append(self.shift_letter(letter=l,shift=self.key))
 
       else:
-        new_text.append(l)
-   return ''.join(new_text)
-
+        encrypted_text.append(l)
+   return ''.join(encrypted_text)
 
   def get_decrypted_text(self,ciphertext):
-    pass
+    decrypted_text = []
 
+    for l in ciphertext:
+      if ord(l) >= ord('a') and ord(l) <= ord('z') or ord(l) >= ord('A') and ord(l) <= ord('Z'):
+        decrypted_text.append(self.shift_letter(letter=l,shift= -self.key))
+      else:
+        decrypted_text.append(l)
+    return ''.join(decrypted_text)
+   
   def is_cipher_working(self):
-    pass
+    test_string = 'QWERTY,asdfg.'
+    
+    encrypted_text_test = self.get_encrypted_text(plaintext = test_string)
+    decrypted_text_test = self.get_decrypted_text(ciphertext=encrypted_text_test)
+    
+    if decrypted_text_test == test_string:
+      return True 
+    return False
    
   def shift_value(self,val_to_shift, shift_amount, first_value, len_alphabet=26):
     if val_to_shift < first_value or val_to_shift >= first_value+len_alphabet:
