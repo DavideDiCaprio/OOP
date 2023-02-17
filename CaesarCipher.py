@@ -49,7 +49,19 @@ class CaesarCipher():
     self.key = k
     
   def get_encrypted_text(self,plaintext):
-    pass
+   new_text = []
+   
+   for l in plaintext:
+      if ord(l) >= ord('a') and ord(l) <= ord('z'):
+         new_text.append(self.shift_letter(letter=l,shift=self.key))
+         
+      elif ord(l) >= ord('A') and ord(l) <= ord('Z'):
+         new_text.append(self.shift_letter(letter=l,shift=self.key))
+
+      else:
+        new_text.append(l)
+   return ''.join(new_text)
+
 
   def get_decrypted_text(self,ciphertext):
     pass
