@@ -49,3 +49,4 @@ cashier.get_bill(basket=basket) # prints: 'You spent a total of 7.5'.
 basket = {'mosquito_sting_relief': 2, popsicle: 1}
 cashier.get_bill(basket=basket) # prints: 'Sorry, we don't have the product: popsicle'.
 ```
+'''
