@@ -53,7 +53,7 @@ class CaesarCipher():
    
    for l in plaintext:
       if ord(l) >= ord('a') and ord(l) <= ord('z'):
-         new_text.append(self.shift_letter(letter=l,shift=self.key))
+         encrypted_text.append(self.shift_letter(letter=l,shift=self.key))
          
       elif ord(l) >= ord('A') and ord(l) <= ord('Z'):
          encrypted_text.append(self.shift_letter(letter=l,shift=self.key))
