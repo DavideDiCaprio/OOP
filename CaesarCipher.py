@@ -45,10 +45,10 @@ cipher.is_cipher_working() # returns True.
 
 '''
 class CaesarCipher():
-  def __init__(self,k):
+  def __init__(self, k):
     self.key = k
     
-  def get_encrypted_text(self,plaintext):
+  def get_encrypted_text(self, plaintext):
    encrypted_text = []
    
    for l in plaintext:
@@ -62,7 +62,7 @@ class CaesarCipher():
         encrypted_text.append(l)
    return ''.join(encrypted_text)
 
-  def get_decrypted_text(self,ciphertext):
+  def get_decrypted_text(self, ciphertext):
     decrypted_text = []
 
     for l in ciphertext:
@@ -82,13 +82,13 @@ class CaesarCipher():
       return True 
     return False
    
-  def shift_value(self,val_to_shift, shift_amount, first_value, len_alphabet=26):
+  def shift_value(self, val_to_shift, shift_amount, first_value, len_alphabet=26):
     if val_to_shift < first_value or val_to_shift >= first_value+len_alphabet:
       print('ERROR: the value to shift is outside of the expected range!')
       return
     return ((val_to_shift-first_value+shift_amount)%len_alphabet)+first_value
     
-  def shift_letter(self,letter,shift):
+  def shift_letter(self, letter, shift):
     if not isinstance(shift,int):
       print('Error: shift must be integer.')
       return
