@@ -80,8 +80,7 @@ class CaesarCipher():
       elif letter.islower():
          frist_value = ord('a')
          
-      return chr(shift_value(val_to_shift=ord(letter), shift_amount=shift, first_value=frist_value,len_alphabet=26))
-   
+      return chr(self.shift_value(val_to_shift=ord(letter), shift_amount=shift, first_value=frist_value,len_alphabet=26))
    
    def shift_string(self, input_text, shift):
       text = []
