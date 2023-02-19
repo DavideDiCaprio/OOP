@@ -45,51 +45,64 @@ cipher.is_cipher_working() # returns True.
 
 '''
 class CaesarCipher():
-  def __init__(self, k):
-    self.key = k
-    
+   def __init__(self, k):
+      self.key = k
+      
+   def shift_value(self, val_to_shift, shift_amount, first_value, len_alphabet=26):
+      if val_to_shift < first_value or val_to_shift >= first_value+len_alphabet:
+         print('ERROR: the value to shift is outside of the expected range!')
+         return
+      return ((val_to_shift-first_value+shift_amount)%len_alphabet)+first_value
    
-  def is_cipher_working(self):
-    test_string = 'QWERTY,asdfg.'
-    
-    encrypted_text_test = self.get_encrypted_text(plaintext = test_string)
-    decrypted_text_test = self.get_decrypted_text(ciphertext=encrypted_text_test)
-    
-    if decrypted_text_test == test_string:
-      return True 
-    return False
+   def shift_letter(self, letter, shift):
+      if not isinstance(shift,int):
+         print('Error: shift must be integer.')
+         return
+      
+      if not isinstance(letter,str):
+         print('Error: letter must be an instance of str')
+         return
+      
+      if len(letter) !=1:
+         print(f'Error: letter must have  exactly one character. Found: {len(letter)}')
+         return
+      
+      if not letter.isalpha():
+         print(f'Error: not a letter. Found: {letter}.')
+         return
+      
+      if not letter.isascii():
+         print('Error: letter not ascii.')
+         
+      frist_value = None
+      if letter.isupper():
+         frist_value = ord('A')
+      elif letter.islower():
+         frist_value = ord('a')
+         
+      return chr(shift_value(val_to_shift=ord(letter), shift_amount=shift, first_value=frist_value,len_alphabet=26))
    
-  def shift_value(self, val_to_shift, shift_amount, first_value, len_alphabet=26):
-    if val_to_shift < first_value or val_to_shift >= first_value+len_alphabet:
-      print('ERROR: the value to shift is outside of the expected range!')
-      return
-    return ((val_to_shift-first_value+shift_amount)%len_alphabet)+first_value
-    
-  def shift_letter(self, letter, shift):
-    if not isinstance(shift,int):
-      print('Error: shift must be integer.')
-      return
-
-    if not isinstance(letter,str):
-      print('Error: letter must be an instance of str')
-      return
+   
+   def shift_string(self, input_text, shift):
+      text = []
+      for l in input_text:
+         if l.isascii() and l.isalpha():
+            text.append(self.shift_letter(letter=l,shift=shift))
+         else:
+            text.append(l)
+      return ''.join(text)
+   
+   def get_encrypted_text(self, plaintext):
+      return self.shift_string(plaintext, self.key)
+   
+   def get_decrypted_text(self, ciphertext):
+      return self.shift_string(ciphertext, -self.key)
+   
+   def is_cipher_working(self):
+      test_string = 'QWERTY,asdfg.'
+      encrypted_text_test = self.get_encrypted_text(plaintext = test_string)
+      decrypted_text_test = self.get_decrypted_text(ciphertext = encrypted_text_test)
       
-    if len(letter) !=1:
-      print(f'Error: letter must have  exactly one character. Found: {len(letter)}')
-      return
-      
-    if not letter.isalpha():
-      print(f'Error: not a letter. Found: {letter}.')
-      return
-      
-    if not letter.isascii():
-      print('Error: letter not ascii.')
-      
-    frist_value = None
-    if letter.isupper():
-      frist_value = ord('A')
-      
-    elif letter.islower():
-      frist_value = ord('a')
-      
-    return chr(shift_value(val_to_shift=ord(letter), shift_amount=shift, first_value=frist_value,len_alphabet=26))
+      if decrypted_text_test  == test_string:
+         return True
+      return False
