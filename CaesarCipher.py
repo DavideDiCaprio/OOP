@@ -48,29 +48,6 @@ class CaesarCipher():
   def __init__(self, k):
     self.key = k
     
-  def get_encrypted_text(self, plaintext):
-   encrypted_text = []
-   
-   for l in plaintext:
-      if ord(l) >= ord('a') and ord(l) <= ord('z'):
-         encrypted_text.append(self.shift_letter(letter=l,shift=self.key))
-         
-      elif ord(l) >= ord('A') and ord(l) <= ord('Z'):
-         encrypted_text.append(self.shift_letter(letter=l,shift=self.key))
-
-      else:
-        encrypted_text.append(l)
-   return ''.join(encrypted_text)
-
-  def get_decrypted_text(self, ciphertext):
-    decrypted_text = []
-
-    for l in ciphertext:
-      if ord(l) >= ord('a') and ord(l) <= ord('z') or ord(l) >= ord('A') and ord(l) <= ord('Z'):
-        decrypted_text.append(self.shift_letter(letter=l,shift= -self.key))
-      else:
-        decrypted_text.append(l)
-    return ''.join(decrypted_text)
    
   def is_cipher_working(self):
     test_string = 'QWERTY,asdfg.'
