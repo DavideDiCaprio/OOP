@@ -50,3 +50,18 @@ basket = {'mosquito_sting_relief': 2, popsicle: 1}
 cashier.get_bill(basket=basket) # prints: 'Sorry, we don't have the product: popsicle'.
 ```
 '''
+class Cashier():
+   def __init__(self):
+      products_and_prices = {}
+   
+   def add_product(product_id, product_price):
+      pass
+
+   def display_n_products():
+      pass
+   
+   def get_bill(basket):
+      pass
+
+   def get_bill_verbose(basket):
+      pass 
