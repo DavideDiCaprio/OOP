@@ -55,17 +55,11 @@ class Cashier():
       products_and_prices = {}
    
    def add_product(product_id, product_price):
-      if product_id in self.products_and_prices:
-         self.products_and_prices[product_id] = product_price
-      else:
-         self.products_and_prices.update({product_id:product_price})
-
+      self.products_and_prices[product_id] = product_price
+      
    def display_n_products(self):
-      n_products = 0
-      for product_id in self.products_and_prices:
-         n_products+= 1 
-         print(n_products)
-         
+      print(f'I have {len(self.products_and_prices)} products registered.')
+
    def get_bill(self, basket):
       bill = 0
       for x in basket:
