@@ -57,11 +57,11 @@ class Cashier():
    def add_product(product_id, product_price):
       pass
 
-   def display_n_products():
+   def display_n_products(self):
       pass
    
-   def get_bill(basket):
+   def get_bill(self, basket):
       pass
 
-   def get_bill_verbose(basket):
+   def get_bill_verbose(self, basket):
       pass 
