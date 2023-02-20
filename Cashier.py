@@ -65,7 +65,16 @@ class Cashier():
       for x in basket:
          if x in self.products_and_prices:
             bill += self.products_and_prices[x] * basket[x]
-      print(f'You spent a total of {bill}')
+      else:
+         print(f'You spent a total of {bill}')
 
    def get_bill_verbose(self, basket):
-      pass 
+     bill = 0
+     for x in basket:
+       if x in self.products_and_prices:
+         bill += self.products_and_prices[x] * basket[x]
+         print(f'{x} : {self.products_and_prices[x]} x {basket[x]}')
+       else:
+         print(f"Sorry, we don't have the product: {x}")
+
+     print(f'You spent a total of {bill}')
