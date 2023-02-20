@@ -52,9 +52,9 @@ cashier.get_bill(basket=basket) # prints: 'Sorry, we don't have the product: pop
 '''
 class Cashier():
    def __init__(self):
-      products_and_prices = {}
+      self.products_and_prices = {}
    
-   def add_product(product_id, product_price):
+   def add_product(self, product_id, product_price):
       self.products_and_prices[product_id] = product_price
       
    def display_n_products(self):
@@ -62,19 +62,19 @@ class Cashier():
 
    def get_bill(self, basket):
       bill = 0
-      for x in basket:
-         if x in self.products_and_prices:
-            bill += self.products_and_prices[x] * basket[x]
-      else:
+      for x in basket.keys():
+         if x not in self.products_and_prices:
+            print(f"Sorry, we don't have the product: {x}")
+            return
+         bill += self.products_and_prices[x] * basket[x]
          print(f'You spent a total of {bill}')
 
    def get_bill_verbose(self, basket):
-     bill = 0
-     for x in basket:
-       if x in self.products_and_prices:
+      bill = 0
+      for x in basket.keys():
+         if x not in self.products_and_prices:
+            print(f"Sorry, we dont't have the product: {x}")
+            continue
          bill += self.products_and_prices[x] * basket[x]
          print(f'{x} : {self.products_and_prices[x]} x {basket[x]}')
-       else:
-         print(f"Sorry, we don't have the product: {x}")
-
-     print(f'You spent a total of {bill}')
+      print(f'You spent a total of {bill}')
