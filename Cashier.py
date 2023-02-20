@@ -67,7 +67,7 @@ class Cashier():
             print(f"Sorry, we don't have the product: {x}")
             return
          bill += self.products_and_prices[x] * basket[x]
-         print(f'You spent a total of {bill}')
+       print(f'You spent a total of {bill}')
 
    def get_bill_verbose(self, basket):
       bill = 0
