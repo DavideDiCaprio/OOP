@@ -48,7 +48,20 @@ class EncryptedStorage():
    def update_key(self, old_key, new_key):
       pass
    
-   def test_EncryptedStorage():
+   
+   
+    
+   
+def test_initation():
+   pass
+
+def test_access_secret_value():
+   pass
+
+def test_update_key():
+   pass
+
+def test_EncryptedStorage():
       test_initation()
       test_access_secret_value()
       test_update_key()
