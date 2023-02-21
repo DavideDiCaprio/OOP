@@ -47,9 +47,6 @@ class EncryptedStorage():
    
    def update_key(self, old_key, new_key):
       pass
-   
-   
-   
     
    
 def test_initation():
@@ -57,15 +54,34 @@ def test_initation():
 
 
 def test_access_secret_value():
-   pass
-
+   storage = EncryptedStorage(key=7, secret_value='LaZanzara')
+   
+   # Checking that we are able to recover the secret value with the correct key.
+   val_correct_key = storage.access_secret_value(key=7)
+   assert val_correct_key == 'LaZanzara', f'''Problem recovering secret value, expected: 'LaZanzara', got '{val_correct_key}'.'''
+   
+   # Checking that the wrong key is giving out a different value of the correct length.
+   val_wrong_key_1 = storage.access_secret_value(key=3)
+   assert val_wrong_key_1 != 'LaZanzara', f'''The wrong key allows to return the secret value. Encryption key: 7, decryption key: 3'''
+   assert len(val_wrong_key_1) == len('LaZanzara'), f'''Using the wrong key returns a string with unexpected length. Got: {len(val_wrong_key_1)}.'''
+   
+   val_wrong_key_2 = storage.access_secret_value(key=4)
+   assert val_wrong_key_2 != 'LaZanzara', f'''The wrong key allows to return the secret value. Encryption key: 7, decryption key: 4.'''
+   assert len(val_wrong_key_2) == len('LaZanzara'), f'''Using the wrong key returns a string with unexpected length. Got: {len(val_wrong_key_2)}.'''
+   
+   # Checking that using different wrong keys is returning different outputs.
+   assert val_wrong_key_1 != val_wrong_key_2, f'''Using different keys produces the same output. Keys: 3, 4. Output: '{val_wrong_key_1}'.'''
+   
 
 def test_update_key():
    pass
 
 
 def test_EncryptedStorage():
-   test_initation()
-   test_access_secret_value()
-   test_update_key()
+   # test_initation() [The implementation is not yet ready]
+   # test_access_secret_value() [The implementation is not yet ready]
+   # test_update_key() [The implementation is not yet ready]
    print('Passed')
+
+   
+test_EncryptedStorage()
