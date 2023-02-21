@@ -55,14 +55,17 @@ class EncryptedStorage():
 def test_initation():
    pass
 
+
 def test_access_secret_value():
    pass
+
 
 def test_update_key():
    pass
 
+
 def test_EncryptedStorage():
-      test_initation()
-      test_access_secret_value()
-      test_update_key()
-      print('Passed')
+   test_initation()
+   test_access_secret_value()
+   test_update_key()
+   print('Passed')
