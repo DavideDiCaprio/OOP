@@ -52,4 +52,4 @@ class EncryptedStorage():
       test_initation()
       test_access_secret_value()
       test_update_key()
-      
+      print('Passed')
