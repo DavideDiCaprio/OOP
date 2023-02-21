@@ -32,10 +32,30 @@ es.access_secret_value(10) # returns 'KcBEK'
 
 es.update_key(old_key=5, new_key=6)
 es.access_secret_value(4) # returns 'Culex'
-es.access_secret_value(8) # returns 'oxyim'
+es.access_secret_value(8) # returns 'oxyim' '''
 
-es.update_key(old_key=4, new_key=12)
-es.access_secret_value(4) # returns 'ptgUz'
-es.access_secret_value(12) # returns 'Culex'
-```
-'''
+
+import CesarChiper
+
+class EncryptedStorage():
+  def __init__(self, key, secret_value):
+    key_value_dict = {}
+    
+    if key not in range(1,26) or not secret_value.isascii:
+      print("uncorrect key,value")
+
+    self.key = key
+    self.secret_value = secret_value
+
+    A = CesarChiper(key) # I get TypeError: 'module' object is not callable
+    A.get_entrypted_text(plaintext=secret_value)
+
+    key_value_dict.update[self.key:self.__A]
+
+    print(key_value_dict)
+
+  def access_secret_value(self, key):
+    pass
+
+  def update_key(self, old_key, new_key):
+    pass
