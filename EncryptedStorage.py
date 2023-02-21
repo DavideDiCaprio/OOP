@@ -38,6 +38,7 @@ es.access_secret_value(8) # returns 'oxyim' '''
 import CesarChiper
 
 class EncryptedStorage():
+   
    def __init__(self, key, secret_value):
       pass
    
@@ -46,3 +47,9 @@ class EncryptedStorage():
    
    def update_key(self, old_key, new_key):
       pass
+   
+   def test_EncryptedStorage():
+      test_initation()
+      test_access_secret_value()
+      test_update_key()
+      
