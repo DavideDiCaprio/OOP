@@ -38,24 +38,11 @@ es.access_secret_value(8) # returns 'oxyim' '''
 import CesarChiper
 
 class EncryptedStorage():
-  def __init__(self, key, secret_value):
-    key_value_dict = {}
-    
-    if key not in range(1,26) or not secret_value.isascii:
-      print("uncorrect key,value")
-
-    self.key = key
-    self.secret_value = secret_value
-
-    A = CesarChiper(key) # I get TypeError: 'module' object is not callable
-    A.get_entrypted_text(plaintext=secret_value)
-
-    key_value_dict.update[self.key:self.__A]
-
-    print(key_value_dict)
-
-  def access_secret_value(self, key):
-    pass
-
-  def update_key(self, old_key, new_key):
-    pass
+   def __init__(self, key, secret_value):
+      pass
+   
+   def access_secret_value(self, key):
+      pass
+   
+   def update_key(self, old_key, new_key):
+      pass
