@@ -74,8 +74,11 @@ def test_access_secret_value():
    
 
 def test_update_key():
-   pass
-
+   
+   storage = EncryptedStorage(key=2, secret_value='abc')
+   storage.update_key(old_key=2, new_key=3)
+   recovered_value_correct_key = storage.access_secret_value(key=3)
+   assert recovered_value_correct_key == 'abc', f'''Problem recovering secret value, expeted 'dfg', got '{recovered_value_correct_key}'.'''
 
 def test_EncryptedStorage():
    # test_initation() [The implementation is not yet ready]
