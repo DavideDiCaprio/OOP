@@ -106,9 +106,10 @@ def test_update_key():
    assert recovered_value_with_old_key != 'abc', 'Old key must not return correct secret value, expected different value'
    
    storage.update_key(old_key=1,new_key=4)
-   recovered_value_uncorrect_key = storage.access_secret_value(key=3)
+   recovered_value_uncorrect_key = storage.access_secret_value(key=4)
    assert recovered_value_uncorrect_key != 'abc', ''' Secret value shouldn't be 'abc' '''
    assert storage.access_secret_value(key=3) == 'abc', '''Secret value shouldn't be change'''
+   
    
 def test_EncryptedStorage():
    # test_initation() [The implementation is not yet ready]
