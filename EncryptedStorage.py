@@ -53,16 +53,14 @@ def test_init():
    storage = EncryptedStorage(key=7, secret_value='LaZanzara')
    assert storage != None, f'''The instance is not created successfully'''
    
-   # Testing a ValueError is thrown if the key is of the wrong type.
-   
-   # key is a float.
+   # Testing a ValueError is thrown if the key is of the wrong type: testing for float.
    try:
       storage = EncryptedStorage(key=float(7), secret_value='LaZanzara')
       assert False, f'Instantiation must fail if key is not an int. Instantiation successful with key of type float.'
    except ValueError:
       pass # A ValueError must be raised if key is not int.
    
-   # key is a string.
+   # Testing a ValueError is thrown if the key is of the wrong type: testing for str.
    try:
       storage = EncryptedStorage(key='7', secret_value='LaZanzara')
       assert False, f'Instantiation must fail if key is not an int. Instantiation successful with key of type str.'
