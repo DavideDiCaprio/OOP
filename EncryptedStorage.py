@@ -74,8 +74,13 @@ def test_init():
       assert False, f'Instantiation must fail if key < 1. Instantiation successful with key = 0.'
    except ValueError:
       pass # A ValueError must be raised if key is < 1.
+   
+   try:
+      storage = EncryptedStorage(key=39, secret_value='LaZanzara')
+      assert False, f'Instantiation must fail if key > 25. Instantiation successful with key = 39.'
+   except ValueError:
+      pass # A ValueError must be raised if key is > 1.
       
-
 
 def test_access_secret_value():
    storage = EncryptedStorage(key=7, secret_value='LaZanzara')
