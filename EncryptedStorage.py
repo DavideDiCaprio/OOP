@@ -37,6 +37,7 @@ es.access_secret_value(8) # returns 'oxyim' '''
 
 import CesarChiper
 
+
 class EncryptedStorage():
    
    def __init__(self, key, secret_value):
@@ -98,13 +99,17 @@ def test_access_secret_value():
 
 def test_update_key():
    storage = EncryptedStorage(key=2, secret_value='abc')
+   
+   #Checking if we are able to update key and access with new key.
    storage.update_key(old_key=2, new_key=3)
    recovered_value_correct_key = storage.access_secret_value(key=3)
    assert recovered_value_correct_key == 'abc', f'''Problem recovering secret value, expeted 'dfg', got '{recovered_value_correct_key}'.'''
    
+   #Cheking if secret value is change correctly.
    recovered_value_with_old_key = storage.acces_secret_value(key=3)
    assert recovered_value_with_old_key != 'abc', 'Old key must not return correct secret value, expected different value'
    
+   #Checking if we try to update key with wrong key.
    storage.update_key(old_key=1,new_key=4)
    recovered_value_uncorrect_key = storage.access_secret_value(key=4)
    assert recovered_value_uncorrect_key != 'abc', ''' Secret value shouldn't be 'abc' '''
