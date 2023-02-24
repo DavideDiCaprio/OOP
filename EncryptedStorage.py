@@ -80,7 +80,23 @@ def test_init():
       assert False, f'Instantiation must fail if key > 25. Instantiation successful with key = 26.'
    except ValueError:
       pass # A ValueError must be raised if key is > 25.
-      
+
+   
+   # Testing a ValueError is thrown if the secret value is not ascii.
+   try:
+     storage = EncryptedStorage(key=9, secret_value='aèiou')
+     assert False, f'''Instantiation must fail if secret value is not ascii. Instantiation successful with secret value = 'aèiou'.'''
+   except ValueError:
+     pass # A ValueError must be raised if secret value is not ascii.
+
+
+   # Testing a ValueError is thrown if the secret value is ascii but not aplha.
+   try:
+     storage = EncryptedStorage(key=9, secret_value='aiou!.')
+     assert False, f'''Instantiation must fail if secret value is ascii but. Instantiation successful with secret value = 'aiou!.' '''
+   except ValueError:
+     pass # A ValueError must be raised if secret value is ascii but not alpha.
+
 
 def test_access_secret_value():
    storage = EncryptedStorage(key=7, secret_value='LaZanzara')
