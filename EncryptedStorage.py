@@ -41,7 +41,24 @@ import CesarChiper
 class EncryptedStorage():
    
    def __init__(self, key, secret_value):
-      pass
+      if not isinstance(key, int):
+         raise ValueError(f'Key must be integer!')
+         
+      if not key >=1 and key <=25:
+         raise ValueError(f'Key must be >=1 and <= 25!')
+         
+      self.key = key
+      
+      if not isinstance(secret_value, str):
+         raise ValueError(f'Secret value must be ')
+
+      if not secret_value.isascii():
+         raise ValueError(f'Secret value must be ascii.')       
+      
+      if not secret_value.isalpha():
+         raise ValueError(f'Secret value must be aplhabet.')
+
+      self.secret_value = secret_value
    
    def access_secret_value(self, key):
       pass
