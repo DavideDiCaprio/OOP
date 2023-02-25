@@ -35,7 +35,7 @@ es.access_secret_value(4) # returns 'Culex'
 es.access_secret_value(8) # returns 'oxyim' '''
 
 
-import CesarChiper
+import CaesarCipher
 
 
 class EncryptedStorage():
@@ -59,6 +59,9 @@ class EncryptedStorage():
          raise ValueError(f'Secret value must be aplhabet.')
 
       self.secret_value = secret_value
+      
+      storage = CaesarCipher(key=self.key)
+      storage.get_encrypted_text(plaintex=self.secret_value)
    
    def access_secret_value(self, key):
       pass
