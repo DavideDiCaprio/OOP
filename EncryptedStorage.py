@@ -44,7 +44,7 @@ class EncryptedStorage():
       if not isinstance(key, int):
          raise ValueError(f'Key must be integer!')
          
-      if not key >=1 and key <=25:
+      if not (key >=1 and key <=25):
          raise ValueError(f'Key must be >=1 and <= 25!')
          
       self.key = key
@@ -57,11 +57,8 @@ class EncryptedStorage():
       
       if not secret_value.isalpha():
          raise ValueError(f'Secret value must be aplhabet.')
-
-      self.secret_value = secret_value
       
-      storage = CaesarCipher(key=self.key)
-      storage.get_encrypted_text(plaintex=self.secret_value)
+      storage.get_encrypted_text(plaintex=secret_value)
    
    def access_secret_value(self, key):
       pass
