@@ -35,11 +35,12 @@ es.access_secret_value(4) # returns 'Culex'
 es.access_secret_value(8) # returns 'oxyim' '''
 
 
-import CaesarCipher
+from CaesarCipher import CaesarCipher
+import random
+import string
 
 
 class EncryptedStorage():
-   
    def __init__(self, key, secret_value):
       if not isinstance(key, int):
          raise ValueError(f'Key must be integer!')
@@ -47,7 +48,7 @@ class EncryptedStorage():
       if not (key >=1 and key <=25):
          raise ValueError(f'Key must be >=1 and <= 25!')
          
-      self.key = key
+      self.__key = key
       
       if not isinstance(secret_value, str):
          raise ValueError(f'Secret value must be ')
@@ -57,14 +58,28 @@ class EncryptedStorage():
       
       if not secret_value.isalpha():
          raise ValueError(f'Secret value must be aplhabet.')
+         
+      self.storage = CaesarCipher(k=self.__key)
+      self.text_encrypted = self.storage.get_encrypted_text(plaintext=secret_value)
       
-      storage.get_encrypted_text(plaintex=secret_value)
-   
    def access_secret_value(self, key):
-      pass
+     if key == self.__key:
+       return self.storage.get_decrypted_text(ciphertext=self.text_encrypted)
+     # In case the key is wrong.
+     return self.__get_random_string(key=key,length=len(self.text_encrypted))
    
    def update_key(self, old_key, new_key):
-      pass
+     if old_key != self.__key:
+       return
+
+     secret_value = self.storage.get_decrypted_text(ciphertext=self.text_encrypted)
+     self.__key = new_key
+     self.storage = CaesarCipher(k=self.__key)
+     self.text_encrypted = self.storage.get_encrypted_text(plaintext=secret_value)
+
+   def __get_random_string(self, key, length):
+     random.seed(key)
+     return ''.join(random.choice(string.ascii_letters) for i in range(length))
     
 def test_init():
    # Testing the istance is created successfully with correct params.
@@ -106,7 +121,6 @@ def test_init():
    except ValueError:
      pass # A ValueError must be raised if secret value is not ascii.
 
-
    # Testing a ValueError is thrown if the secret value is ascii but not aplha.
    try:
      storage = EncryptedStorage(key=9, secret_value='aiou!.')
@@ -144,7 +158,7 @@ def test_update_key():
    assert recovered_value_correct_key == 'abc', f'''Problem recovering secret value, expeted 'dfg', got '{recovered_value_correct_key}'.'''
    
    #Cheking if secret value is change correctly.
-   recovered_value_with_old_key = storage.acces_secret_value(key=3)
+   recovered_value_with_old_key = storage.access_secret_value(key=2)
    assert recovered_value_with_old_key != 'abc', 'Old key must not return correct secret value, expected different value'
    
    #Checking if we try to update key with wrong key.
@@ -155,9 +169,9 @@ def test_update_key():
    
    
 def test_EncryptedStorage():
-   # test_initation() [The implementation is not yet ready]
-   # test_access_secret_value() [The implementation is not yet ready]
-   # test_update_key() [The implementation is not yet ready]
+   test_initation()
+   test_access_secret_value()
+   test_update_key() 
    print('Passed')
 
    
